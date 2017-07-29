@@ -53,5 +53,11 @@ namespace SailorsBoats
             Reports reportsWindow = new Reports();
             reportsWindow.ShowDialog();
         }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            AboutBox1 aboutBox = new AboutBox1();
+            aboutBox.ShowDialog();
+        }
     }
 }

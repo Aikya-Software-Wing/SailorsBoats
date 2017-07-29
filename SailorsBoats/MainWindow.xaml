@@ -9,10 +9,10 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top" Background="Transparent">
             <MenuItem Header="_File">
-                <MenuItem Header="Exit" Click="Exit_Click"></MenuItem>
+                <MenuItem Header="_Exit" Click="Exit_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="_Help">
-                <MenuItem Header="About"></MenuItem>
+                <MenuItem Header="_About" Click="About_Click"></MenuItem>
             </MenuItem>
         </Menu>
         <Grid>
