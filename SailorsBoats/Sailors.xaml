@@ -18,6 +18,14 @@
                 <RowDefinition Height="169*"/>
             </Grid.RowDefinitions>
             <Label Content="Sailors" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10" FontSize="36"/>
+            <DataGrid Margin="10" Grid.Row="1">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Id"/>
+                    <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                    <DataGridTextColumn Binding="{Binding Rating}" ClipboardContentBinding="{x:Null}" Header="Rating"/>
+                    <DataGridTextColumn Binding="{Binding Age}" ClipboardContentBinding="{x:Null}" Header="Age"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </DockPanel>
 </Window>
