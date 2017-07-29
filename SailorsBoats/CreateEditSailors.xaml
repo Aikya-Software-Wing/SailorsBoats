@@ -23,15 +23,15 @@
         <Label Content="Sailor Name" Margin="10" Grid.Row="1" FontSize="14" FontWeight="Bold"/>
         <Label Content="Sailor Age" Margin="10" Grid.Row="2" FontSize="14" FontWeight="Bold"/>
         <Label Content="Sailor Rating" Margin="10" Grid.Row="3" FontSize="14" FontWeight="Bold"/>
-        <TextBox Grid.Column="1" Margin="10,16,10,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" Margin="10,16,10,0" Grid.Row="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" Margin="10,16,10,0" Grid.Row="2" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" Margin="10,16,10,0" Grid.Row="3" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
+        <TextBox x:Name="SailorId_TextBox" Grid.Column="1" Margin="10,16,10,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
+        <TextBox x:Name="SailorName_TextBox" Grid.Column="1" Margin="10,16,10,0" Grid.Row="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
+        <TextBox x:Name="SailorAge_TextBox" Grid.Column="1" Margin="10,16,10,0" Grid.Row="2" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
+        <TextBox x:Name="SailorRating_TextBox" Grid.Column="1" Margin="10,16,10,0" Grid.Row="3" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
         <Button Content="Save" Grid.Column="1" Margin="80,15,76,0" Grid.Row="4" Height="20" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Label Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="10,12,0,16" RenderTransformOrigin="0.526,0" Width="222" FontWeight="Bold" Foreground="Red"/>
-        <Label Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="10,12,0,16" RenderTransformOrigin="0.526,0" Width="222" Grid.Row="1" FontWeight="Bold" Foreground="Red"/>
-        <Label Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="10,13,0,15" RenderTransformOrigin="0.526,0" Width="222" Grid.Row="2" FontWeight="Bold" Foreground="Red"/>
-        <Label Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="10,12,0,16" RenderTransformOrigin="0.526,0" Width="222" Grid.Row="3" FontWeight="Bold" Foreground="Red"/>
+        <Label x:Name="SailorId_ValidationLabel" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="10,12,0,16" RenderTransformOrigin="0.526,0" Width="222" FontWeight="Bold" Foreground="Red"/>
+        <Label x:Name="SailorName_ValidationLabel" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="10,12,0,16" RenderTransformOrigin="0.526,0" Width="222" Grid.Row="1" FontWeight="Bold" Foreground="Red"/>
+        <Label x:Name="SailorAge_ValidationLabel" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="10,13,0,15" RenderTransformOrigin="0.526,0" Width="222" Grid.Row="2" FontWeight="Bold" Foreground="Red"/>
+        <Label x:Name="SailorRating_ValidationLabel" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="10,12,0,16" RenderTransformOrigin="0.526,0" Width="222" Grid.Row="3" FontWeight="Bold" Foreground="Red"/>
 
     </Grid>
 </Window>
