@@ -30,5 +30,15 @@ namespace SailorsBoats
         {
             this.SailorId = SailorId;
         }
+
+        private void Save_Button_Click(object sender, RoutedEventArgs e)
+        {
+            string id = SailorId_TextBox.Text;
+            string name = SailorName_TextBox.Text;
+            string rating = SailorRating_TextBox.Text;
+            string age = SailorAge_TextBox.Text;
+
+
+        }
     }
 }
