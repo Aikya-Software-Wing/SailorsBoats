@@ -27,7 +27,13 @@ namespace SailorsBoats
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            Application.Current.Shutdown();
+        }
+
+        private void SailorsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Sailors sailorWindow = new Sailors();
+            sailorWindow.Show();
         }
     }
 }
