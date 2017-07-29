@@ -18,7 +18,7 @@
                 <RowDefinition Height="169*"/>
             </Grid.RowDefinitions>
             <Label Content="Sailors" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10" FontSize="36"/>
-            <DataGrid Margin="10" Grid.Row="1">
+            <DataGrid x:Name="SailorsDataGrid" Margin="10" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Id"/>
                     <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Name"/>

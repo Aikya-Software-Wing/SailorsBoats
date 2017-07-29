@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SailorsBoats.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,20 @@ namespace SailorsBoats
     /// </summary>
     public partial class Sailors : Window
     {
+        private List<Sailor> SailorList;
+
         public Sailors()
         {
             InitializeComponent();
+            SailorList = new List<Sailor>
+            {
+                new Sailor { Age = 10, Id = 1, Name = "Sailor 1", Rating = 10 },
+                new Sailor { Age = 13, Id = 2, Name = "Sailor 4", Rating = 10 },
+                new Sailor { Age = 15, Id = 3, Name = "Sailor 6", Rating = 10 },
+                new Sailor { Age = 12, Id = 4, Name = "Sailor 3", Rating = 10 }
+            };
+
+            SailorsDataGrid.ItemsSource = SailorList;
         }
     }
 }
