@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SailorsBoats"
         mc:Ignorable="d"
-        Title="Sailors" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        Title="Sailors" Height="352" Width="484">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Background="Transparent">
+            <MenuItem Header="_File">
+                <MenuItem Header="New Sailor"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="82*"/>
+                <RowDefinition Height="169*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Sailors" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10" FontSize="36"/>
+        </Grid>
+    </DockPanel>
 </Window>
