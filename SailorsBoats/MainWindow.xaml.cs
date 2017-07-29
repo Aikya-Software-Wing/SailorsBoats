@@ -33,53 +33,25 @@ namespace SailorsBoats
         private void SailorsButton_Click(object sender, RoutedEventArgs e)
         {
             Sailors sailorWindow = new Sailors();
-            sailorWindow.Show();
-            SailorsButton.IsEnabled = false;
-            sailorWindow.Closed += SailorWindow_Closed;
-        }
-
-        private void SailorWindow_Closed(object sender, EventArgs e)
-        {
-            SailorsButton.IsEnabled = true;
+            sailorWindow.ShowDialog();
         }
 
         private void BoatsButton_Click(object sender, RoutedEventArgs e)
         {
             Boats boatsWindow = new Boats();
-            boatsWindow.Show();
-            BoatsButton.IsEnabled = false;
-            boatsWindow.Closed += BoatsWindow_Closed;
-        }
-
-        private void BoatsWindow_Closed(object sender, EventArgs e)
-        {
-            BoatsButton.IsEnabled = true;
+            boatsWindow.ShowDialog();
         }
 
         private void ReserveButton_Click(object sender, RoutedEventArgs e)
         {
             ReserveBoat reserveBoatWindow = new ReserveBoat();
-            reserveBoatWindow.Show();
-            ReserveButton.IsEnabled = false;
-            reserveBoatWindow.Closed += ReserveBoatWindow_Closed;
-        }
-
-        private void ReserveBoatWindow_Closed(object sender, EventArgs e)
-        {
-            ReserveButton.IsEnabled = true;
+            reserveBoatWindow.ShowDialog();
         }
 
         private void ReportsButton_Click(object sender, RoutedEventArgs e)
         {
             Reports reportsWindow = new Reports();
-            reportsWindow.Show();
-            ReportsButton.IsEnabled = false;
-            reportsWindow.Closed += ReportsWindow_Closed;
-        }
-
-        private void ReportsWindow_Closed(object sender, EventArgs e)
-        {
-            ReportsButton.IsEnabled = true;
+            reportsWindow.ShowDialog();
         }
     }
 }
