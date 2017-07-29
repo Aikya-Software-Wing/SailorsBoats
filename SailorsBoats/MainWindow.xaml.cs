@@ -47,6 +47,13 @@ namespace SailorsBoats
         {
             Boats boatsWindow = new Boats();
             boatsWindow.Show();
+            BoatsButton.IsEnabled = false;
+            boatsWindow.Closed += BoatsWindow_Closed;
+        }
+
+        private void BoatsWindow_Closed(object sender, EventArgs e)
+        {
+            BoatsButton.IsEnabled = true;
         }
 
         private void ReserveButton_Click(object sender, RoutedEventArgs e)
