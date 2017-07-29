@@ -27,7 +27,7 @@
             <Button x:Name="SailorsButton" Content="Sailors" Margin="10" Grid.Row="1" FontSize="24" Click="SailorsButton_Click"/>
             <Button x:Name="BoatsButton" Content="Boats" Margin="10" Grid.Row="2" FontSize="24" Click="BoatsButton_Click"/>
             <Button x:Name="ReserveButton" Content="Reserve Boat" Margin="10" Grid.Row="3" FontSize="24" Click="ReserveButton_Click"/>
-            <Button x:Name="ReportsButton" Content="Reports" Margin="10" Grid.Row="4" FontSize="24"/>
+            <Button x:Name="ReportsButton" Content="Reports" Margin="10" Grid.Row="4" FontSize="24" Click="ReportsButton_Click"/>
 
         </Grid>
     </DockPanel>
