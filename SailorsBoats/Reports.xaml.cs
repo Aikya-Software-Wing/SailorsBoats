@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SailorsBoats.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,26 @@ namespace SailorsBoats
     /// </summary>
     public partial class Reports : Window
     {
+        private List<ReportViewModel> reportList;
+
         public Reports()
         {
             InitializeComponent();
+            reportList = new List<ReportViewModel>
+            {
+                new ReportViewModel{ Id = 1, Description = "Report #1"},
+                new ReportViewModel{ Id = 2, Description = "Report #2"},
+                new ReportViewModel{ Id = 3, Description = "Report #3"},
+                new ReportViewModel{ Id = 4, Description = "Report #4"}
+            };
+
+            Report_ListView.ItemsSource = reportList;
+        }
+
+        private void GenerateReport_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button generateReportButton = (Button)sender;
+            int reportId = (int)generateReportButton.Tag;
         }
     }
 }

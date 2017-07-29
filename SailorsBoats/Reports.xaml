@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="Reports" Height="352" Width="484" MinHeight="352" MinWidth="484">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="241*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Reports" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10" FontSize="36"/>
+        <ListView Name="Report_ListView" HorizontalAlignment="Left" Height="221" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="456">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="GenerateReport_Button" Content="Generate" Tag="{Binding Id}" Click="GenerateReport_Button_Click"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>

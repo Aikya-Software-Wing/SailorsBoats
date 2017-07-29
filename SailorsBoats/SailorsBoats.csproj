@@ -78,6 +78,7 @@
     <Compile Include="Validators\BoatValidator.cs" />
     <Compile Include="Validators\ReserveValidator.cs" />
     <Compile Include="Validators\SailorValidator.cs" />
+    <Compile Include="ViewModel\ReportViewModel.cs" />
     <Page Include="Boats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
