@@ -75,6 +75,7 @@
     <Compile Include="Sailors.xaml.cs">
       <DependentUpon>Sailors.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Validators\BoatValidator.cs" />
     <Compile Include="Validators\SailorValidator.cs" />
     <Page Include="Boats.xaml">
       <SubType>Designer</SubType>
