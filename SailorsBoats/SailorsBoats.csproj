@@ -61,6 +61,7 @@
       <DependentUpon>CreateEditSailors.xaml</DependentUpon>
     </Compile>
     <Compile Include="DAL\BoatDAL.cs" />
+    <Compile Include="DAL\ReserveDAL.cs" />
     <Compile Include="DAL\SailorDAL.cs" />
     <Compile Include="Models\Boat.cs" />
     <Compile Include="Models\Reserve.cs" />
