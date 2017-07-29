@@ -41,5 +41,11 @@ namespace SailorsBoats
             Boats boatsWindow = new Boats();
             boatsWindow.Show();
         }
+
+        private void ReserveButton_Click(object sender, RoutedEventArgs e)
+        {
+            ReserveBoat reserveBoatWindow = new ReserveBoat();
+            reserveBoatWindow.Show();
+        }
     }
 }
