@@ -59,13 +59,13 @@ namespace SailorsBoats
             int sailorId = (int)editButton.Tag;
 
             CreateEditSailors createEditSailorsWindow = new CreateEditSailors(sailorId);
-            createEditSailorsWindow.Show();
+            createEditSailorsWindow.ShowDialog();
         }
 
         private void NewSailor_Click(object sender, RoutedEventArgs e)
         {
             CreateEditSailors createEditSailorsWindow = new CreateEditSailors();
-            createEditSailorsWindow.Show();
+            createEditSailorsWindow.ShowDialog();
         }
     }
 }
