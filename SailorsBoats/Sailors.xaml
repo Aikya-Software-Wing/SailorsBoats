@@ -14,8 +14,8 @@
         </Menu>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="82*"/>
-                <RowDefinition Height="169*"/>
+                <RowDefinition Height="77*"/>
+                <RowDefinition Height="226*"/>
             </Grid.RowDefinitions>
             <Label Content="Sailors" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10" FontSize="36"/>
             <DataGrid x:Name="SailorsDataGrid" Margin="10" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
