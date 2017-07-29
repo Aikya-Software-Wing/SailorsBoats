@@ -6,19 +6,29 @@
         xmlns:local="clr-namespace:SailorsBoats"
         mc:Ignorable="d"
         Title="Sailors Boats" Height="427" Width="564">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="19*"/>
-        </Grid.RowDefinitions>
-        <Label Content="Sailors Boats" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10,12,10,4" VerticalAlignment="Center" Width="536" FontSize="36" Height="64"/>
-        <Button x:Name="SailorsButton" Content="Sailors" Margin="10" Grid.Row="1" FontSize="24"/>
-        <Button x:Name="BoatsButton" Content="Boats" Margin="10" Grid.Row="2" FontSize="24"/>
-        <Button x:Name="ReserveButton" Content="Reserve Boat" Margin="10" Grid.Row="3" FontSize="24"/>
-        <Button x:Name="ReportsButton" Content="Reports" Margin="10" Grid.Row="4" FontSize="24"/>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Background="Transparent">
+            <MenuItem Header="_File">
+                <MenuItem Header="Exit"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="About"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="19*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Sailors Boats" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10,12,10,4" VerticalAlignment="Center" Width="536" FontSize="36" Height="64"/>
+            <Button x:Name="SailorsButton" Content="Sailors" Margin="10" Grid.Row="1" FontSize="24"/>
+            <Button x:Name="BoatsButton" Content="Boats" Margin="10" Grid.Row="2" FontSize="24"/>
+            <Button x:Name="ReserveButton" Content="Reserve Boat" Margin="10" Grid.Row="3" FontSize="24"/>
+            <Button x:Name="ReportsButton" Content="Reports" Margin="10" Grid.Row="4" FontSize="24"/>
 
-    </Grid>
+        </Grid>
+    </DockPanel>
 </Window>
