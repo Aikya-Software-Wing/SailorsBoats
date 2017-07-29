@@ -60,6 +60,13 @@ namespace SailorsBoats
         {
             ReserveBoat reserveBoatWindow = new ReserveBoat();
             reserveBoatWindow.Show();
+            ReserveButton.IsEnabled = false;
+            reserveBoatWindow.Closed += ReserveBoatWindow_Closed;
+        }
+
+        private void ReserveBoatWindow_Closed(object sender, EventArgs e)
+        {
+            ReserveButton.IsEnabled = true;
         }
 
         private void ReportsButton_Click(object sender, RoutedEventArgs e)
