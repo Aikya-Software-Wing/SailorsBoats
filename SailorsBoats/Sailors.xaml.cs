@@ -1,4 +1,5 @@
-﻿using SailorsBoats.Models;
+﻿using SailorsBoats.DAL;
+using SailorsBoats.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,20 +21,13 @@ namespace SailorsBoats
     /// </summary>
     public partial class Sailors : Window
     {
-        private List<Sailor> SailorList;
+        private SailorDAL dal;
 
         public Sailors()
         {
             InitializeComponent();
-            SailorList = new List<Sailor>
-            {
-                new Sailor { Age = 10, Id = 1, Name = "Sailor 1", Rating = 10 },
-                new Sailor { Age = 13, Id = 2, Name = "Sailor 4", Rating = 10 },
-                new Sailor { Age = 15, Id = 3, Name = "Sailor 6", Rating = 10 },
-                new Sailor { Age = 12, Id = 4, Name = "Sailor 3", Rating = 10 }
-            };
-
-            SailorsDataGrid.ItemsSource = SailorList;
+            dal = SailorDAL.Instance;
+            SailorsDataGrid.ItemsSource = dal.GetAllSailors();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -46,7 +40,8 @@ namespace SailorsBoats
             switch(result)
             {
                 case MessageBoxResult.Yes:
-                    // delete the sailor
+                    dal.DeleteSailor(sailorId);
+                    SailorsDataGrid.Items.Refresh();
                     break;
                 case MessageBoxResult.No:
                     break;
@@ -60,12 +55,14 @@ namespace SailorsBoats
 
             CreateEditSailors createEditSailorsWindow = new CreateEditSailors(sailorId);
             createEditSailorsWindow.ShowDialog();
+            SailorsDataGrid.Items.Refresh();
         }
 
         private void NewSailor_Click(object sender, RoutedEventArgs e)
         {
             CreateEditSailors createEditSailorsWindow = new CreateEditSailors();
             createEditSailorsWindow.ShowDialog();
+            SailorsDataGrid.Items.Refresh();
         }
     }
 }
