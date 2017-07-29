@@ -19,9 +19,16 @@ namespace SailorsBoats
     /// </summary>
     public partial class CreateEditSailors : Window
     {
+        private int SailorId = -1;
+
         public CreateEditSailors()
         {
             InitializeComponent();
+        }
+
+        public CreateEditSailors(int SailorId) : this()
+        {
+            this.SailorId = SailorId;
         }
     }
 }

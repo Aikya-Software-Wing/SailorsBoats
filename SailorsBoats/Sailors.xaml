@@ -9,7 +9,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top" Background="Transparent">
             <MenuItem Header="_File">
-                <MenuItem Header="New Sailor"></MenuItem>
+                <MenuItem Header="New Sailor" Click="NewSailor_Click"></MenuItem>
             </MenuItem>
         </Menu>
         <Grid>

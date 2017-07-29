@@ -57,6 +57,15 @@ namespace SailorsBoats
         {
             Button editButton = (Button)sender;
             int sailorId = (int)editButton.Tag;
+
+            CreateEditSailors createEditSailorsWindow = new CreateEditSailors(sailorId);
+            createEditSailorsWindow.Show();
+        }
+
+        private void NewSailor_Click(object sender, RoutedEventArgs e)
+        {
+            CreateEditSailors createEditSailorsWindow = new CreateEditSailors();
+            createEditSailorsWindow.Show();
         }
     }
 }
