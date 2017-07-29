@@ -41,7 +41,7 @@ namespace SailorsBoats
             Button deleteButton = (Button)sender;
             int sailorId = (int)deleteButton.Tag;
 
-            MessageBoxResult result =  MessageBox.Show("Are you sure you want to delete sailor with ID " 
+            MessageBoxResult result =  MessageBox.Show(this, "Are you sure you want to delete sailor with ID " 
                 + sailorId + "?", "Are you sure?", MessageBoxButton.YesNo);
             switch(result)
             {
