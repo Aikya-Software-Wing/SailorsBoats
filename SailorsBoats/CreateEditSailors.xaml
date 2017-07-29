@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SailorsBoats"
         mc:Ignorable="d"
-        Title="CreateEditSailors" Height="300" Width="484">
+        Title="CreateEditSailors" Height="300" Width="484" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40*"/>
@@ -18,15 +18,15 @@
             <RowDefinition Height="50*"/>
             <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
-        <Label Content="Sailor Id" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="34" Width="140" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Sailor Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="34" Width="140" Grid.Row="1" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Sailor Age" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="34" Width="140" Grid.Row="2" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Sailor Rating" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="34" Width="140" Grid.Row="3" FontSize="14" FontWeight="Bold"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,16,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="296"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,16,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="296"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,16,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="296"/>
-        <Button Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="80,15,0,0" Grid.Row="4" VerticalAlignment="Top" Width="160"/>
+        <Label Content="Sailor Id" Margin="10" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Sailor Name" Margin="10" Grid.Row="1" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Sailor Age" Margin="10" Grid.Row="2" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Sailor Rating" Margin="10" Grid.Row="3" FontSize="14" FontWeight="Bold"/>
+        <TextBox Grid.Column="1" Margin="10,16,10,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="1" Margin="10,16,10,0" Grid.Row="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="1" Margin="10,16,10,0" Grid.Row="2" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="1" Margin="10,16,10,0" Grid.Row="3" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
+        <Button Content="Save" Grid.Column="1" Margin="80,15,76,0" Grid.Row="4" Height="20" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
