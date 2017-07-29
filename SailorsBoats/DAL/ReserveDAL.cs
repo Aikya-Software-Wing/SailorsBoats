@@ -1,6 +1,7 @@
 ﻿using SailorsBoats.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,14 +39,14 @@ namespace SailorsReserves.DAL
         }
         #endregion
 
-        private List<Reserve> ReserveList = new List<Reserve>
+        private ObservableCollection<Reserve> ReserveList = new ObservableCollection<Reserve>
         {
             new Reserve { SailorId = 1, BoatId =1, Date = DateTime.Now },
             new Reserve { SailorId = 2, BoatId =3, Date = DateTime.Now },
             new Reserve { SailorId = 3, BoatId =4, Date = DateTime.Now },
         };
 
-        public List<Reserve> GetAllReserves()
+        public ObservableCollection<Reserve> GetAllReserves()
         {
             return ReserveList;
         }

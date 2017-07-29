@@ -41,7 +41,7 @@ namespace SailorsBoats
             {
                 case MessageBoxResult.Yes:
                     dal.DeleteSailor(sailorId);
-                    SailorsDataGrid.Items.Refresh();
+                    //SailorsDataGrid.Items.Refresh();
                     break;
                 case MessageBoxResult.No:
                     break;
@@ -55,14 +55,14 @@ namespace SailorsBoats
 
             CreateEditSailors createEditSailorsWindow = new CreateEditSailors(sailorId);
             createEditSailorsWindow.ShowDialog();
-            SailorsDataGrid.Items.Refresh();
+            //SailorsDataGrid.Items.Refresh();
         }
 
         private void NewSailor_Click(object sender, RoutedEventArgs e)
         {
             CreateEditSailors createEditSailorsWindow = new CreateEditSailors();
             createEditSailorsWindow.ShowDialog();
-            SailorsDataGrid.Items.Refresh();
+            //SailorsDataGrid.Items.Refresh();
         }
     }
 }

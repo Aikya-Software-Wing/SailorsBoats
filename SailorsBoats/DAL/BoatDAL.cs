@@ -1,6 +1,7 @@
 ﻿using SailorsBoats.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +39,7 @@ namespace BoatsBoats.DAL
         }
         #endregion
 
-        private List<Boat> BoatList = new List<Boat>
+        private ObservableCollection<Boat> BoatList = new ObservableCollection<Boat>
         {
             new Boat { Id = 1, Name = "Boat 1", Color = "Red" },
             new Boat { Id = 2, Name = "Boat 4", Color = "Red" },
@@ -46,7 +47,7 @@ namespace BoatsBoats.DAL
             new Boat { Id = 4, Name = "Boat 3", Color = "Red" }
         };
 
-        public List<Boat> GetAllBoats()
+        public ObservableCollection<Boat> GetAllBoats()
         {
             return BoatList;
         }
