@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BoatsBoats.DAL
 {
-    class BoatDAL
+    public class BoatDAL
     {
         #region Singleton
 
