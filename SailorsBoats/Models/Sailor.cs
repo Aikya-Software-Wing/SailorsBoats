@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SailorsBoats.Models
 {
-    class Sailor
+    public class Sailor
     {
         public int Id { get; set; }
         public string Name { get; set; }
