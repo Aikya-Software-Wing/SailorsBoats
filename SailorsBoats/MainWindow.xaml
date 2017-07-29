@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SailorsBoats"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Sailors Boats" Height="427" Width="564">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="19*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Sailors Boats" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10,12,10,4" VerticalAlignment="Center" Width="536" FontSize="36" Height="64"/>
+
     </Grid>
 </Window>
