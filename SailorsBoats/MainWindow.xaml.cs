@@ -35,5 +35,11 @@ namespace SailorsBoats
             Sailors sailorWindow = new Sailors();
             sailorWindow.Show();
         }
+
+        private void BoatsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Boats boatsWindow = new Boats();
+            boatsWindow.Show();
+        }
     }
 }
