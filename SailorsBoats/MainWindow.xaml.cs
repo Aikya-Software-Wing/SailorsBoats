@@ -73,6 +73,13 @@ namespace SailorsBoats
         {
             Reports reportsWindow = new Reports();
             reportsWindow.Show();
+            ReportsButton.IsEnabled = false;
+            reportsWindow.Closed += ReportsWindow_Closed;
+        }
+
+        private void ReportsWindow_Closed(object sender, EventArgs e)
+        {
+            ReportsButton.IsEnabled = true;
         }
     }
 }
