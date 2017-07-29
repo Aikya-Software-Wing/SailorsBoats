@@ -40,6 +40,9 @@ namespace SailorsBoats
         {
             Button generateReportButton = (Button)sender;
             int reportId = (int)generateReportButton.Tag;
+
+            ReportViewer reportViewer = new ReportViewer(reportId);
+            reportViewer.ShowDialog();
         }
     }
 }
