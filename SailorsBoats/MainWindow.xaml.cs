@@ -34,6 +34,13 @@ namespace SailorsBoats
         {
             Sailors sailorWindow = new Sailors();
             sailorWindow.Show();
+            SailorsButton.IsEnabled = false;
+            sailorWindow.Closed += SailorWindow_Closed;
+        }
+
+        private void SailorWindow_Closed(object sender, EventArgs e)
+        {
+            SailorsButton.IsEnabled = true;
         }
 
         private void BoatsButton_Click(object sender, RoutedEventArgs e)
