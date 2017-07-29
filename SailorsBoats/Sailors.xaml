@@ -24,6 +24,20 @@
                     <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Name"/>
                     <DataGridTextColumn Binding="{Binding Rating}" ClipboardContentBinding="{x:Null}" Header="Rating"/>
                     <DataGridTextColumn Binding="{Binding Age}" ClipboardContentBinding="{x:Null}" Header="Age"/>
+                    <DataGridTemplateColumn Header="Edit">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Edit" Tag="{Binding Id}" Click="EditButton_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Delete">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Tag="{Binding Id}" Click="DeleteButton_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

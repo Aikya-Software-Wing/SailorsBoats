@@ -35,5 +35,28 @@ namespace SailorsBoats
 
             SailorsDataGrid.ItemsSource = SailorList;
         }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button deleteButton = (Button)sender;
+            int sailorId = (int)deleteButton.Tag;
+
+            MessageBoxResult result =  MessageBox.Show("Are you sure you want to delete sailor with ID " 
+                + sailorId + "?", "Are you sure?", MessageBoxButton.YesNo);
+            switch(result)
+            {
+                case MessageBoxResult.Yes:
+                    // delete the sailor
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button editButton = (Button)sender;
+            int sailorId = (int)editButton.Tag;
+        }
     }
 }
