@@ -1,5 +1,6 @@
 ﻿using SailorsBoats.DAL;
 using SailorsBoats.Models;
+using SailorsBoats.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,29 @@ namespace SailorsBoats
             DisplaySailorForEdit();
         }
 
+        private void Save_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ValidateSailorAndDisplayMessages(SailorId_TextBox.Text, SailorName_TextBox.Text,
+                SailorRating_TextBox.Text, SailorAge_TextBox.Text))
+            {
+                return;
+            }
+
+            Sailor sailor = GetSailorObjectFromInput();
+
+            if (SailorId == -1)
+            {
+                dal.AddSailor(sailor);
+            }
+            else
+            {
+                dal.UpdateSailor(SailorId, sailor);
+            }
+
+            Close();
+        }
+
+        #region Helpers
         private void DisplaySailorForEdit()
         {
             Sailor sailor = dal.GetSailor(SailorId);
@@ -45,7 +69,7 @@ namespace SailorsBoats
             SailorRating_TextBox.Text = sailor.Rating + "";
         }
 
-        private void Save_Button_Click(object sender, RoutedEventArgs e)
+        private Sailor GetSailorObjectFromInput()
         {
             int id = int.Parse(SailorId_TextBox.Text);
             string name = SailorName_TextBox.Text;
@@ -59,17 +83,39 @@ namespace SailorsBoats
                 Name = name,
                 Rating = rating
             };
-
-            if (SailorId == -1)
-            {
-                dal.AddSailor(sailor);
-            }
-            else
-            {
-                dal.UpdateSailor(SailorId, sailor);
-            }
-
-            Close();
+            return sailor;
         }
+
+        private bool ValidateSailorAndDisplayMessages(string id, string name, string rating, string age)
+        {
+            bool allPropertiesValid = true;
+
+            if (!SailorValidator.IsIdValid(id, out string errorMessage))
+            {
+                allPropertiesValid = false;
+                SailorId_ValidationLabel.Content = errorMessage;
+            }
+
+            if (!SailorValidator.IsNameValid(name, out errorMessage))
+            {
+                allPropertiesValid = false;
+                SailorName_ValidationLabel.Content = errorMessage;
+            }
+
+            if (!SailorValidator.IsAgeValid(age, out errorMessage))
+            {
+                allPropertiesValid = false;
+                SailorAge_ValidationLabel.Content = errorMessage;
+            }
+
+            if (!SailorValidator.IsRatingValid(rating, out errorMessage))
+            {
+                allPropertiesValid = false;
+                SailorRating_ValidationLabel.Content = errorMessage;
+            }
+
+            return allPropertiesValid;
+        }
+        #endregion
     }
 }

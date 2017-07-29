@@ -9,30 +9,24 @@ namespace SailorsBoats.DAL
 {
     public class SailorDAL
     {
+        #region Singleton
+
         private static volatile SailorDAL instance;
         private static object padLock = new Object();
-        private List<Sailor> SailorList;
 
         private SailorDAL()
         {
-            SailorList = new List<Sailor>
-            {
-                new Sailor { Age = 10, Id = 1, Name = "Sailor 1", Rating = 10 },
-                new Sailor { Age = 13, Id = 2, Name = "Sailor 4", Rating = 10 },
-                new Sailor { Age = 15, Id = 3, Name = "Sailor 6", Rating = 10 },
-                new Sailor { Age = 12, Id = 4, Name = "Sailor 3", Rating = 10 }
-            };
         }
 
         public static SailorDAL Instance
         {
             get
             {
-                if(instance == null)
+                if (instance == null)
                 {
-                    lock(padLock)
+                    lock (padLock)
                     {
-                        if(instance == null)
+                        if (instance == null)
                         {
                             instance = new SailorDAL();
                         }
@@ -42,6 +36,15 @@ namespace SailorsBoats.DAL
                 return instance;
             }
         }
+        #endregion
+
+        private List<Sailor> SailorList = new List<Sailor>
+        {
+            new Sailor { Age = 10, Id = 1, Name = "Sailor 1", Rating = 10 },
+            new Sailor { Age = 13, Id = 2, Name = "Sailor 4", Rating = 10 },
+            new Sailor { Age = 15, Id = 3, Name = "Sailor 6", Rating = 10 },
+            new Sailor { Age = 12, Id = 4, Name = "Sailor 3", Rating = 10 }
+        };
 
         public List<Sailor> GetAllSailors()
         {
