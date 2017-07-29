@@ -20,7 +20,7 @@ namespace SailorsBoats.Validators
             return true;
         }
 
-        public static bool IsColorValid(string rating, out string errorMessage)
+        public static bool IsColorValid(string color, out string errorMessage)
         {
             errorMessage = "";
             return true;
