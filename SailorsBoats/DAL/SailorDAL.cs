@@ -118,8 +118,24 @@ namespace SailorsBoats.DAL
 
         public void UpdateSailor(int id, Sailor sailor)
         {
-            SailorList.Remove(GetSailor(id));
-            AddSailor(sailor);
+            SailorList.Remove(SailorList.Where(x => x.Id == id).First());
+            SailorList.Add(sailor);
+
+            string queryString = "UPDATE Sailors " +
+                "SET id = @newId, name = @name, rating = @rating, age = @age " +
+                "WHERE id = @oldId";
+            using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.AddWithValue("@oldId", id);
+                command.Parameters.AddWithValue("@newId", sailor.Id);
+                command.Parameters.AddWithValue("@name", sailor.Name);
+                command.Parameters.AddWithValue("@rating", sailor.Rating);
+                command.Parameters.AddWithValue("@age", sailor.Age);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public void DeleteSailor(int id)
