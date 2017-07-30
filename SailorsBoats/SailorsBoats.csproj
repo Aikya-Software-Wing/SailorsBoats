@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -86,6 +87,7 @@
     <Compile Include="Sailors.xaml.cs">
       <DependentUpon>Sailors.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\Constants.cs" />
     <Compile Include="Validators\BoatValidator.cs" />
     <Compile Include="Validators\ReserveValidator.cs" />
     <Compile Include="Validators\SailorValidator.cs" />
