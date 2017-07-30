@@ -94,6 +94,8 @@
       <DependentUpon>Sailors.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\Constants.cs" />
+    <Compile Include="Util\IntegerValidator.cs" />
+    <Compile Include="Util\StringValidator.cs" />
     <Compile Include="Validators\BoatValidator.cs" />
     <Compile Include="Validators\ReserveValidator.cs" />
     <Compile Include="Validators\SailorValidator.cs" />
