@@ -1,7 +1,9 @@
 ﻿using SailorsBoats.Models;
+using SailorsBoats.Util;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,15 +41,38 @@ namespace SailorsReserves.DAL
         }
         #endregion
 
-        private ObservableCollection<Reserve> ReserveList = new ObservableCollection<Reserve>
-        {
-            new Reserve { Id = 0, SailorId = 1, BoatId =1, Date = DateTime.Now },
-            new Reserve { Id = 1, SailorId = 2, BoatId =3, Date = DateTime.Now },
-            new Reserve { Id = 2, SailorId = 3, BoatId =4, Date = DateTime.Now },
-        };
+        private ObservableCollection<Reserve> ReserveList = new ObservableCollection<Reserve>();
 
         public ObservableCollection<Reserve> GetAllReserves()
         {
+            ReserveList.Clear();
+
+            string queryString = "SELECT * " +
+                "FROM Reserves";
+            int uid = 0;
+
+            using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(queryString, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            ReserveList.Add(new Reserve
+                            {
+                                Id = uid++,
+                                SailorId = (int)reader[0],
+                                BoatId = (int)reader[1],
+                                Date = (DateTime)reader[2]
+                            });
+                        }
+                        reader.Close();
+                    }
+                }
+            }
+
             return ReserveList;
         }
 
