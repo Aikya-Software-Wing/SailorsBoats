@@ -72,6 +72,8 @@ namespace SailorsBoats.DAL
 
         public void AddSailor(Sailor sailor)
         {
+            SailorList.Add(sailor);
+
             string queryString = "INSERT INTO Sailors VALUES(@id, @name, @rating, @age)";
             using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
             {
@@ -84,8 +86,6 @@ namespace SailorsBoats.DAL
                 connection.Open();
                 command.ExecuteNonQuery();
             }
-
-            SailorList.Add(sailor);
         }
 
         public Sailor GetSailor(int id)
@@ -124,7 +124,17 @@ namespace SailorsBoats.DAL
 
         public void DeleteSailor(int id)
         {
-            SailorList.Remove(GetSailor(id));
+            SailorList.Remove(SailorList.Where(x => x.Id == id).First());
+
+            string queryString = "DELETE FROM Sailors WHERE id = @id";
+            using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.AddWithValue("@id", id);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
     }
 }
