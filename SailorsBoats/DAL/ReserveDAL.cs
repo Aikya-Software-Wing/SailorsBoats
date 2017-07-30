@@ -79,6 +79,22 @@ namespace SailorsReserves.DAL
         public void AddReserve(Reserve reserve)
         {
             ReserveList.Add(reserve);
+
+            string queryString = "INSERT INTO Reserves " +
+                "VALUES(@sailorId, @boatId, @reserveDate)";
+
+            using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(queryString, connection))
+                {
+                    command.Parameters.AddWithValue("@sailorId", reserve.SailorId);
+                    command.Parameters.AddWithValue("@boatId", reserve.BoatId);
+                    command.Parameters.AddWithValue("@reserveDate", reserve.Date);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public Reserve GetReserve(int sailorId, int boatId, DateTime date)
