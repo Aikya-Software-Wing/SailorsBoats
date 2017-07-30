@@ -45,7 +45,7 @@ namespace SailorsBoats.DAL
 
         public ObservableCollection<Sailor> GetAllSailors()
         {
-            ObservableCollection<Sailor> sailorList = new ObservableCollection<Sailor>();
+            SailorList.Clear();
 
             string queryString = "SELECT * FROM Sailors";
             using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
@@ -56,7 +56,7 @@ namespace SailorsBoats.DAL
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    sailorList.Add(new Sailor
+                    SailorList.Add(new Sailor
                     {
                         Id = (int)reader[0],
                         Name = (string)reader[1],
@@ -67,17 +67,53 @@ namespace SailorsBoats.DAL
                 reader.Close();
             }
 
-            return sailorList;
+            return SailorList;
         }
 
         public void AddSailor(Sailor sailor)
         {
+            string queryString = "INSERT INTO Sailors VALUES(@id, @name, @rating, @age)";
+            using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.AddWithValue("@id", sailor.Id);
+                command.Parameters.AddWithValue("@name", sailor.Name);
+                command.Parameters.AddWithValue("@rating", sailor.Rating);
+                command.Parameters.AddWithValue("@age", sailor.Age);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+
             SailorList.Add(sailor);
         }
 
         public Sailor GetSailor(int id)
         {
-            return SailorList.Where(x => x.Id == id).First();
+            Sailor sailor = null;
+
+            string queryString = "SELECT * FROM Sailors WHERE id = @id";
+            using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.AddWithValue("@id", id);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    sailor = new Sailor
+                    {
+                        Id = (int)reader[0],
+                        Name = (string)reader[1],
+                        Rating = (int)reader[2],
+                        Age = (int)reader[3]
+                    };
+                }
+                reader.Close();
+            }
+
+            return sailor;
         }
 
         public void UpdateSailor(int id, Sailor sailor)
