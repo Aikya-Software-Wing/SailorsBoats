@@ -1,7 +1,9 @@
 ﻿using SailorsBoats.Models;
+using SailorsBoats.Util;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,17 +41,33 @@ namespace SailorsBoats.DAL
         }
         #endregion
 
-        private ObservableCollection<Sailor> SailorList = new ObservableCollection<Sailor>
-        {
-            new Sailor { Age = 10, Id = 1, Name = "Sailor 1", Rating = 10 },
-            new Sailor { Age = 13, Id = 2, Name = "Sailor 4", Rating = 10 },
-            new Sailor { Age = 15, Id = 3, Name = "Sailor 6", Rating = 10 },
-            new Sailor { Age = 12, Id = 4, Name = "Sailor 3", Rating = 10 }
-        };
+        private ObservableCollection<Sailor> SailorList = new ObservableCollection<Sailor>();
 
         public ObservableCollection<Sailor> GetAllSailors()
         {
-            return SailorList;
+            ObservableCollection<Sailor> sailorList = new ObservableCollection<Sailor>();
+
+            string queryString = "SELECT * FROM Sailors";
+            using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    sailorList.Add(new Sailor
+                    {
+                        Id = (int)reader[0],
+                        Name = (string)reader[1],
+                        Rating = (int)reader[2],
+                        Age = (int)reader[3]
+                    });
+                }
+                reader.Close();
+            }
+
+            return sailorList;
         }
 
         public void AddSailor(Sailor sailor)
