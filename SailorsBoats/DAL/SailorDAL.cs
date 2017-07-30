@@ -47,24 +47,29 @@ namespace SailorsBoats.DAL
         {
             SailorList.Clear();
 
-            string queryString = "SELECT * FROM Sailors";
+            string queryString = "SELECT * " +
+                "FROM Sailors";
+
             using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(queryString, connection);
-
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                using (SqlCommand command = new SqlCommand(queryString, connection))
                 {
-                    SailorList.Add(new Sailor
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        Id = (int)reader[0],
-                        Name = (string)reader[1],
-                        Rating = (int)reader[2],
-                        Age = (int)reader[3]
-                    });
+                        while (reader.Read())
+                        {
+                            SailorList.Add(new Sailor
+                            {
+                                Id = (int)reader[0],
+                                Name = (string)reader[1],
+                                Rating = (int)reader[2],
+                                Age = (int)reader[3]
+                            });
+                        }
+                        reader.Close();
+                    }
                 }
-                reader.Close();
             }
 
             return SailorList;
@@ -74,17 +79,21 @@ namespace SailorsBoats.DAL
         {
             SailorList.Add(sailor);
 
-            string queryString = "INSERT INTO Sailors VALUES(@id, @name, @rating, @age)";
+            string queryString = "INSERT INTO Sailors " +
+                "VALUES(@id, @name, @rating, @age)";
+
             using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(queryString, connection);
-                command.Parameters.AddWithValue("@id", sailor.Id);
-                command.Parameters.AddWithValue("@name", sailor.Name);
-                command.Parameters.AddWithValue("@rating", sailor.Rating);
-                command.Parameters.AddWithValue("@age", sailor.Age);
+                using (SqlCommand command = new SqlCommand(queryString, connection))
+                {
+                    command.Parameters.AddWithValue("@id", sailor.Id);
+                    command.Parameters.AddWithValue("@name", sailor.Name);
+                    command.Parameters.AddWithValue("@rating", sailor.Rating);
+                    command.Parameters.AddWithValue("@age", sailor.Age);
 
-                connection.Open();
-                command.ExecuteNonQuery();
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
             }
         }
 
@@ -92,25 +101,31 @@ namespace SailorsBoats.DAL
         {
             Sailor sailor = null;
 
-            string queryString = "SELECT * FROM Sailors WHERE id = @id";
+            string queryString = "SELECT * " +
+                "FROM Sailors " +
+                "WHERE id = @id";
+
             using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(queryString, connection);
-                command.Parameters.AddWithValue("@id", id);
-
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                using (SqlCommand command = new SqlCommand(queryString, connection))
                 {
-                    sailor = new Sailor
+                    command.Parameters.AddWithValue("@id", id);
+
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        Id = (int)reader[0],
-                        Name = (string)reader[1],
-                        Rating = (int)reader[2],
-                        Age = (int)reader[3]
-                    };
+                        while (reader.Read())
+                        {
+                            sailor = new Sailor
+                            {
+                                Id = (int)reader[0],
+                                Name = (string)reader[1],
+                                Rating = (int)reader[2],
+                                Age = (int)reader[3]
+                            };
+                        }
+                    }
                 }
-                reader.Close();
             }
 
             return sailor;
@@ -124,17 +139,20 @@ namespace SailorsBoats.DAL
             string queryString = "UPDATE Sailors " +
                 "SET id = @newId, name = @name, rating = @rating, age = @age " +
                 "WHERE id = @oldId";
+
             using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(queryString, connection);
-                command.Parameters.AddWithValue("@oldId", id);
-                command.Parameters.AddWithValue("@newId", sailor.Id);
-                command.Parameters.AddWithValue("@name", sailor.Name);
-                command.Parameters.AddWithValue("@rating", sailor.Rating);
-                command.Parameters.AddWithValue("@age", sailor.Age);
+                using (SqlCommand command = new SqlCommand(queryString, connection))
+                {
+                    command.Parameters.AddWithValue("@oldId", id);
+                    command.Parameters.AddWithValue("@newId", sailor.Id);
+                    command.Parameters.AddWithValue("@name", sailor.Name);
+                    command.Parameters.AddWithValue("@rating", sailor.Rating);
+                    command.Parameters.AddWithValue("@age", sailor.Age);
 
-                connection.Open();
-                command.ExecuteNonQuery();
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
             }
         }
 
@@ -142,14 +160,18 @@ namespace SailorsBoats.DAL
         {
             SailorList.Remove(SailorList.Where(x => x.Id == id).First());
 
-            string queryString = "DELETE FROM Sailors WHERE id = @id";
+            string queryString = "DELETE FROM Sailors " +
+                "WHERE id = @id";
+
             using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(queryString, connection);
-                command.Parameters.AddWithValue("@id", id);
+                using (SqlCommand command = new SqlCommand(queryString, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
 
-                connection.Open();
-                command.ExecuteNonQuery();
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
             }
         }
     }
