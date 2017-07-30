@@ -97,7 +97,6 @@
     <Compile Include="Util\IntegerValidator.cs" />
     <Compile Include="Util\StringValidator.cs" />
     <Compile Include="Validators\BoatValidator.cs" />
-    <Compile Include="Validators\ReserveValidator.cs" />
     <Compile Include="Validators\SailorValidator.cs" />
     <Compile Include="ViewModel\ReportViewModel.cs" />
     <Page Include="Boats.xaml">
