@@ -6,7 +6,39 @@
         xmlns:local="clr-namespace:SailorsBoats"
         mc:Ignorable="d"
         Title="Boats" Height="352" Width="484" MinHeight="352" MinWidth="484">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Background="Transparent">
+            <MenuItem Header="_File">
+                <MenuItem Header="New Boat" Click="NewBoat_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="77*"/>
+                <RowDefinition Height="226*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Boats" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10" FontSize="36"/>
+            <DataGrid x:Name="BoatsDataGrid" Margin="10" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Id" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Name" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Color}" ClipboardContentBinding="{x:Null}" Header="Color" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Header="Edit">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Edit" Tag="{Binding Id}" Click="EditButton_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Delete">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Tag="{Binding Id}" Click="DeleteButton_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </DockPanel>
 </Window>
