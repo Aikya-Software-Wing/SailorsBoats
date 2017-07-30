@@ -86,8 +86,17 @@ namespace SailorsBoats
             return sailor;
         }
 
+        private void ClearAllValidationMessages()
+        {
+            SailorId_ValidationLabel.Content = "";
+            SailorName_ValidationLabel.Content = "";
+            SailorAge_ValidationLabel.Content = "";
+            SailorRating_ValidationLabel.Content = "";
+        }
+
         private bool ValidateSailorAndDisplayMessages(string id, string name, string rating, string age)
         {
+            ClearAllValidationMessages();
             bool allPropertiesValid = true;
 
             if (!SailorValidator.IsIdValid(id, out string errorMessage))
