@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoatsBoats.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,13 @@ namespace SailorsBoats
     /// </summary>
     public partial class Boats : Window
     {
+        private BoatDAL dal;
+
         public Boats()
         {
             InitializeComponent();
+            dal = BoatDAL.Instance;
+            BoatsDataGrid.ItemsSource = dal.GetAllBoats();
         }
 
         private void NewBoat_Click(object sender, RoutedEventArgs e)
@@ -36,7 +41,20 @@ namespace SailorsBoats
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            Button deleteButton = (Button)sender;
+            int boatId = (int)deleteButton.Tag;
 
+            MessageBoxResult result = MessageBox.Show(this, "Are you sure you want to delete sailor with ID "
+                + boatId + "?", "Are you sure?", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    dal.DeleteBoat(boatId);
+                    //SailorsDataGrid.Items.Refresh();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
         }
     }
 }
