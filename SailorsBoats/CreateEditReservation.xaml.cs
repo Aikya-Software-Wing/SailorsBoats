@@ -73,9 +73,9 @@ namespace SailorsBoats
         private void DisplayReservationForEdit()
         {
             Reserve reserve = reserveDal.GetReserve(ReservationId);
-            SailorName_TextBox.Text = reserve.SailorId + "";
-            BoatName_TextBox.Text = reserve.BoatId + "";
-            ReservationDate_TextBox.Text = reserve.Date.ToLongDateString();
+            SailorName_TextBox.SelectedValue = reserve.SailorId;
+            BoatName_TextBox.SelectedValue = reserve.BoatId;
+            ReservationDate_TextBox.SelectedDate = reserve.Date;
         }
 
         private void PopulateSailorDropDown()
