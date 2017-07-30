@@ -1,4 +1,4 @@
-﻿using BoatsBoats.DAL;
+﻿using SailorsBoats.DAL;
 using SailorsBoats.Models;
 using SailorsBoats.Validators;
 using System;
@@ -86,8 +86,9 @@ namespace SailorsBoats
         private bool ValidateSailorAndDisplayMessages(string id, string name, string color)
         {
             bool allPropertiesValid = true;
+            string errorMessage;
 
-            if (!BoatValidator.IsIdValid(id, out string errorMessage))
+            if (!BoatValidator.IsIdValid(id, out errorMessage))
             {
                 allPropertiesValid = false;
                 BoatId_ValidationLabel.Content = errorMessage;

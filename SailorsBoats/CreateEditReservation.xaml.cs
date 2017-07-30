@@ -1,5 +1,4 @@
-﻿using BoatsBoats.DAL;
-using SailorsBoats.DAL;
+﻿using SailorsBoats.DAL;
 using SailorsBoats.Models;
 using SailorsBoats.Validators;
 using SailorsReserves.DAL;
@@ -106,8 +105,9 @@ namespace SailorsBoats
         private bool ValidateReservationAndDisplayMessages(string sailorId, string boatId, string date)
         {
             bool allPropertiesValid = true;
+            string errorMessage;
 
-            if (!ReserveValidator.IsSailorIdValid(sailorId, out string errorMessage))
+            if (!ReserveValidator.IsSailorIdValid(sailorId, out errorMessage))
             {
                 allPropertiesValid = false;
                 SailorName_ValidationLabel.Content = errorMessage;

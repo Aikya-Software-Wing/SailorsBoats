@@ -27,10 +27,16 @@ namespace SailorsBoats
             InitializeComponent();
             reportList = new List<ReportViewModel>
             {
-                new ReportViewModel{ Id = 1, Description = "Report #1"},
-                new ReportViewModel{ Id = 2, Description = "Report #2"},
-                new ReportViewModel{ Id = 3, Description = "Report #3"},
-                new ReportViewModel{ Id = 4, Description = "Report #4"}
+                new ReportViewModel{ Id = 1, Description = "Names of all sailors with a rating above 8"},
+                new ReportViewModel{ Id = 2, Description = "Names of all sailors who have reserved boat number 1"},
+                new ReportViewModel{ Id = 3, Description = "Colors of boats reserved by Andy Dufresne"},
+                new ReportViewModel{ Id = 4, Description = "Names of sailors who have reserved a Absolute Zero or Cinnabar boat"},
+                new ReportViewModel{ Id = 5, Description = "Sailor with highest rating"},
+                new ReportViewModel{ Id = 6, Description = "Average age of all sailors with rating 10"},
+                new ReportViewModel{ Id = 7, Description = "Name and age of the oldest sailor"},
+                new ReportViewModel{ Id = 8, Description = "Count the number of different sailor names"},
+                new ReportViewModel{ Id = 9, Description = "Age of youngest sailor for each rating level"},
+                new ReportViewModel{ Id = 10, Description = "Average age of sailors for each rating that has atleast 2 sailors"}
             };
 
             Report_ListView.ItemsSource = reportList;

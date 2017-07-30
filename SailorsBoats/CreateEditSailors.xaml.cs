@@ -89,8 +89,9 @@ namespace SailorsBoats
         private bool ValidateSailorAndDisplayMessages(string id, string name, string rating, string age)
         {
             bool allPropertiesValid = true;
+            string errorMessage;
 
-            if (!SailorValidator.IsIdValid(id, out string errorMessage))
+            if (!SailorValidator.IsIdValid(id, out errorMessage))
             {
                 allPropertiesValid = false;
                 SailorId_ValidationLabel.Content = errorMessage;
