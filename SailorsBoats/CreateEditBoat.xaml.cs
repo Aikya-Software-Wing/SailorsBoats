@@ -83,8 +83,16 @@ namespace SailorsBoats
             return boat;
         }
 
+        private void ClearAllValidationMessages()
+        {
+            BoatId_ValidationLabel.Content = "";
+            BoatName_ValidationLabel.Content = "";
+            BoatColor_ValidationLabel.Content = "";
+        }
+
         private bool ValidateSailorAndDisplayMessages(string id, string name, string color)
         {
+            ClearAllValidationMessages();
             bool allPropertiesValid = true;
 
             if (!BoatValidator.IsIdValid(id, out string errorMessage))
