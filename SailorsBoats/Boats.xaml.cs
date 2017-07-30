@@ -31,12 +31,17 @@ namespace SailorsBoats
 
         private void NewBoat_Click(object sender, RoutedEventArgs e)
         {
-
+            CreateEditBoat createEditBoatWindow = new CreateEditBoat();
+            createEditBoatWindow.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            Button editButton = (Button)sender;
+            int boatId = (int)editButton.Tag;
 
+            CreateEditBoat createEditBoatWindow = new CreateEditBoat(boatId);
+            createEditBoatWindow.ShowDialog();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
