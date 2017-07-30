@@ -31,12 +31,17 @@ namespace SailorsBoats
 
         private void NewReservation_Click(object sender, RoutedEventArgs e)
         {
-
+            CreateEditReservation createEditReservationWindow = new CreateEditReservation();
+            createEditReservationWindow.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            Button editButton = (Button)sender;
+            int reservationId = (int)editButton.Tag;
 
+            CreateEditReservation createEditReservationWindow = new CreateEditReservation(reservationId);
+            createEditReservationWindow.ShowDialog();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

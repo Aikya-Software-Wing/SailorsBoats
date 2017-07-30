@@ -62,10 +62,22 @@ namespace SailorsReserves.DAL
                  && x.Date == date).First();
         }
 
+        public Reserve GetReserve(int id)
+        {
+            Reserve reserve = ReserveList.Where(x => x.Id == id).First();
+            return GetReserve(reserve.SailorId, reserve.BoatId, reserve.Date);
+        }
+
         public void UpdateReserve(int sailorId, int boatId, DateTime date, Reserve reserve)
         {
             ReserveList.Remove(GetReserve(sailorId, boatId, date));
             AddReserve(reserve);
+        }
+
+        public void UpdateReserve(int id, Reserve reserve)
+        {
+            Reserve oldReserve = ReserveList.Where(x => x.Id == id).First();
+            UpdateReserve(oldReserve.SailorId, oldReserve.BoatId, oldReserve.Date, reserve);
         }
 
         public void DeleteReserve(int sailorId, int boatId, DateTime date)
