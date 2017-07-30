@@ -18,7 +18,7 @@
                 <RowDefinition Height="226*"/>
             </Grid.RowDefinitions>
             <Label Content="Reservations" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10" FontSize="36"/>
-            <DataGrid x:Name="SailorsDataGrid" Margin="10" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid x:Name="ReservesDataGrid" Margin="10" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding SailorId}" ClipboardContentBinding="{x:Null}" Header="Sailor Name" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding BoatId}" ClipboardContentBinding="{x:Null}" Header="Boat Name" IsReadOnly="True"/>

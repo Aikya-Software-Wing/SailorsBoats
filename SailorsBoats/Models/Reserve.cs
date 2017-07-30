@@ -8,6 +8,7 @@ namespace SailorsBoats.Models
 {
     public class Reserve
     {
+        public int Id { get; set; }
         public int SailorId { get; set; }
         public int BoatId { get; set; }
         public DateTime Date { get; set; }

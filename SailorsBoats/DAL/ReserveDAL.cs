@@ -41,9 +41,9 @@ namespace SailorsReserves.DAL
 
         private ObservableCollection<Reserve> ReserveList = new ObservableCollection<Reserve>
         {
-            new Reserve { SailorId = 1, BoatId =1, Date = DateTime.Now },
-            new Reserve { SailorId = 2, BoatId =3, Date = DateTime.Now },
-            new Reserve { SailorId = 3, BoatId =4, Date = DateTime.Now },
+            new Reserve { Id = 0, SailorId = 1, BoatId =1, Date = DateTime.Now },
+            new Reserve { Id = 1, SailorId = 2, BoatId =3, Date = DateTime.Now },
+            new Reserve { Id = 2, SailorId = 3, BoatId =4, Date = DateTime.Now },
         };
 
         public ObservableCollection<Reserve> GetAllReserves()
@@ -71,6 +71,12 @@ namespace SailorsReserves.DAL
         public void DeleteReserve(int sailorId, int boatId, DateTime date)
         {
             ReserveList.Remove(GetReserve(sailorId, boatId, date));
+        }
+
+        public void DeleteReserve(int id)
+        {
+            Reserve reserve = ReserveList.Where(x => x.Id == id).First();
+            DeleteReserve(reserve.SailorId, reserve.BoatId, reserve.Date);
         }
     }
 }

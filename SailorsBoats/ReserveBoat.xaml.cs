@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SailorsReserves.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,13 @@ namespace SailorsBoats
     /// </summary>
     public partial class ReserveBoat : Window
     {
+        private ReserveDAL dal;
+
         public ReserveBoat()
         {
             InitializeComponent();
+            dal = ReserveDAL.Instance;
+            ReservesDataGrid.ItemsSource = dal.GetAllReserves();
         }
 
         private void NewReservation_Click(object sender, RoutedEventArgs e)
@@ -36,7 +41,20 @@ namespace SailorsBoats
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            Button deleteButton = (Button)sender;
+            int reservationId = (int)deleteButton.Tag;
 
+            MessageBoxResult result = MessageBox.Show(this, "Are you sure you want to delete sailor with ID "
+                + reservationId + "?", "Are you sure?", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    dal.DeleteReserve(reservationId);
+                    //SailorsDataGrid.Items.Refresh();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
         }
     }
 }
