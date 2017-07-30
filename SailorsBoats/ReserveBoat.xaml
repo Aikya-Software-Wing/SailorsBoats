@@ -6,7 +6,39 @@
         xmlns:local="clr-namespace:SailorsBoats"
         mc:Ignorable="d"
         Title="ReserveBoat" Height="352" Width="484" MinHeight="352" MinWidth="484">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Background="Transparent">
+            <MenuItem Header="_File">
+                <MenuItem Header="New Reservation" Click="NewReservation_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="77*"/>
+                <RowDefinition Height="226*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Reservations" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10" FontSize="36"/>
+            <DataGrid x:Name="SailorsDataGrid" Margin="10" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding SailorId}" ClipboardContentBinding="{x:Null}" Header="Sailor Name" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding BoatId}" ClipboardContentBinding="{x:Null}" Header="Boat Name" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Date}" ClipboardContentBinding="{x:Null}" Header="Reservation Date" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Header="Edit">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Edit" Tag="{Binding Id}" Click="EditButton_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Delete">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Tag="{Binding Id}" Click="DeleteButton_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </DockPanel>
 </Window>
