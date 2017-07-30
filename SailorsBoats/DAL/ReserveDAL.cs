@@ -99,14 +99,47 @@ namespace SailorsReserves.DAL
 
         public Reserve GetReserve(int sailorId, int boatId, DateTime date)
         {
-            return ReserveList.Where(x => x.SailorId == sailorId && x.BoatId == boatId
-                 && x.Date == date).First();
+            Reserve reserve = null;
+
+            string queryString = "SELECT * " +
+                "FROM Reserves " +
+                "WHERE sailorId = @sailorId AND boatId = @boatId AND reserveDate = @reserveDate";
+
+            using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(queryString, connection))
+                {
+                    command.Parameters.AddWithValue("@sailorId", sailorId);
+                    command.Parameters.AddWithValue("@boatId", boatId);
+                    command.Parameters.AddWithValue("@reserveDate", date);
+
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            reserve = new Reserve
+                            {
+                                SailorId = (int)reader[0],
+                                BoatId = (int)reader[1],
+                                Date = (DateTime)reader[2]
+                            };
+                        }
+                    }
+                }
+            }
+
+            return reserve;
         }
 
         public Reserve GetReserve(int id)
         {
             Reserve reserve = ReserveList.Where(x => x.Id == id).First();
-            return GetReserve(reserve.SailorId, reserve.BoatId, reserve.Date);
+
+            reserve =  GetReserve(reserve.SailorId, reserve.BoatId, reserve.Date);
+            reserve.Id = id;
+
+            return reserve;
         }
 
         public void UpdateReserve(int sailorId, int boatId, DateTime date, Reserve reserve)
@@ -123,7 +156,24 @@ namespace SailorsReserves.DAL
 
         public void DeleteReserve(int sailorId, int boatId, DateTime date)
         {
-            ReserveList.Remove(GetReserve(sailorId, boatId, date));
+            ReserveList.Remove(ReserveList.Where(x => x.SailorId == sailorId 
+                && x.BoatId == boatId && x.Date == date).First());
+
+            string queryString = "DELETE FROM Reserves " +
+                "WHERE sailorId = @sailorId AND boatId = @boatId AND reserveDate = @reserveDate";
+
+            using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(queryString, connection))
+                {
+                    command.Parameters.AddWithValue("@sailorId", sailorId);
+                    command.Parameters.AddWithValue("@boatId", boatId);
+                    command.Parameters.AddWithValue("@reserveDate", date);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public void DeleteReserve(int id)
