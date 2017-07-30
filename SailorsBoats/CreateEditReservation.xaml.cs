@@ -48,12 +48,6 @@ namespace SailorsBoats
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!ValidateReservationAndDisplayMessages(SailorName_TextBox.Text, BoatName_TextBox.Text, 
-                ReservationDate_TextBox.Text))
-            {
-                return;
-            }
-
             Reserve reserve = GetReserveObjectFromInput();
 
             if (ReservationId == -1)
@@ -102,31 +96,6 @@ namespace SailorsBoats
             return reserve;
         }
 
-        private bool ValidateReservationAndDisplayMessages(string sailorId, string boatId, string date)
-        {
-            bool allPropertiesValid = true;
-            string errorMessage;
-
-            if (!ReserveValidator.IsSailorIdValid(sailorId, out errorMessage))
-            {
-                allPropertiesValid = false;
-                SailorName_ValidationLabel.Content = errorMessage;
-            }
-
-            if (!ReserveValidator.IsBoatIdValid(boatId, out errorMessage))
-            {
-                allPropertiesValid = false;
-                BoatName_ValidationLabel.Content = errorMessage;
-            }
-
-            if (!ReserveValidator.IsDateValid(date, out errorMessage))
-            {
-                allPropertiesValid = false;
-                ReservationDate_ValidationLabel.Content = errorMessage;
-            }
-
-            return allPropertiesValid;
-        }
         #endregion
     }
 }
