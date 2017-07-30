@@ -21,9 +21,9 @@
         <Label Content="Sailor Name" Margin="10" Grid.Row="0" FontSize="14" FontWeight="Bold"/>
         <Label Content="Boat Name" Margin="10" Grid.Row="1" FontSize="14" FontWeight="Bold"/>
         <Label Content="Date" Margin="10" Grid.Row="2" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="SailorName_TextBox" Grid.Column="1" Margin="10,16,10,0" Grid.Row="0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
-        <TextBox x:Name="BoatName_TextBox" Grid.Column="1" Margin="10,16,10,0" Grid.Row="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
-        <TextBox x:Name="ReservationDate_TextBox" Grid.Column="1" Margin="10,16,10,0" Grid.Row="2" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
+        <ComboBox x:Name="SailorName_TextBox" Grid.Column="1" Margin="10,16,10,0" Grid.Row="0" Height="23" VerticalAlignment="Top" SelectedValuePath="Id" DisplayMemberPath="Name"/>
+        <ComboBox x:Name="BoatName_TextBox" Grid.Column="1" Margin="10,16,10,0" Grid.Row="1" Height="23" VerticalAlignment="Top" SelectedValuePath="Id" DisplayMemberPath="Name"/>
+        <DatePicker x:Name="ReservationDate_TextBox" Grid.Column="1" Margin="10,16,10,0" Grid.Row="2" Height="23" VerticalAlignment="Top"/>
         <Button x:Name="Save_Button" Content="Save" Grid.Column="1" Margin="80,15,76,0" Grid.Row="3" Height="20" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="Save_Button_Click"/>
         <Label x:Name="SailorName_ValidationLabel" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="10,12,0,16" RenderTransformOrigin="0.526,0" Width="222" Grid.Row="0" FontWeight="Bold" Foreground="Red"/>
         <Label x:Name="BoatName_ValidationLabel" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="10,13,0,15" RenderTransformOrigin="0.526,0" Width="222" Grid.Row="1" FontWeight="Bold" Foreground="Red"/>

@@ -1,8 +1,11 @@
-﻿using SailorsBoats.Models;
+﻿using BoatsBoats.DAL;
+using SailorsBoats.DAL;
+using SailorsBoats.Models;
 using SailorsBoats.Validators;
 using SailorsReserves.DAL;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,12 +26,19 @@ namespace SailorsBoats
     public partial class CreateEditReservation : Window
     {
         private int ReservationId = -1;
-        private ReserveDAL dal;
+        private ReserveDAL reserveDal;
+        private SailorDAL sailorDal;
+        private BoatDAL boatDal;
 
         public CreateEditReservation()
         {
             InitializeComponent();
-            dal = ReserveDAL.Instance;
+            reserveDal = ReserveDAL.Instance;
+            sailorDal = SailorDAL.Instance;
+            boatDal = BoatDAL.Instance;
+
+            PopulateSailorDropDown();
+            PopulateBoatDropDown();
         }
 
         public CreateEditReservation(int ReservationId) : this()
@@ -49,11 +59,11 @@ namespace SailorsBoats
 
             if (ReservationId == -1)
             {
-                dal.AddReserve(reserve);
+                reserveDal.AddReserve(reserve);
             }
             else
             {
-                dal.UpdateReserve(ReservationId, reserve);
+                reserveDal.UpdateReserve(ReservationId, reserve);
             }
 
             Close();
@@ -62,17 +72,27 @@ namespace SailorsBoats
         #region Helpers
         private void DisplayReservationForEdit()
         {
-            Reserve reserve = dal.GetReserve(ReservationId);
+            Reserve reserve = reserveDal.GetReserve(ReservationId);
             SailorName_TextBox.Text = reserve.SailorId + "";
             BoatName_TextBox.Text = reserve.BoatId + "";
             ReservationDate_TextBox.Text = reserve.Date.ToLongDateString();
         }
 
+        private void PopulateSailorDropDown()
+        {
+            SailorName_TextBox.ItemsSource = sailorDal.GetAllSailors();
+        }
+
+        private void PopulateBoatDropDown()
+        {
+            BoatName_TextBox.ItemsSource = boatDal.GetAllBoats();
+        }
+
         private Reserve GetReserveObjectFromInput()
         {
-            int sailorName = int.Parse(SailorName_TextBox.Text);
-            int boatName = int.Parse(BoatName_TextBox.Text);
-            DateTime date = DateTime.Now;
+            int sailorName = (int)SailorName_TextBox.SelectedValue;
+            int boatName = (int)BoatName_TextBox.SelectedValue;
+            DateTime date = ReservationDate_TextBox.SelectedDate.Value;
 
             Reserve reserve = new Reserve
             {
