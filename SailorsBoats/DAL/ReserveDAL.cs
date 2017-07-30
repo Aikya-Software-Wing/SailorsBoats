@@ -78,6 +78,7 @@ namespace SailorsReserves.DAL
 
         public void AddReserve(Reserve reserve)
         {
+            reserve.Id = ReserveList.Max(x => x.Id) + 1;
             ReserveList.Add(reserve);
 
             string queryString = "INSERT INTO Reserves " +
@@ -144,8 +145,30 @@ namespace SailorsReserves.DAL
 
         public void UpdateReserve(int sailorId, int boatId, DateTime date, Reserve reserve)
         {
-            ReserveList.Remove(GetReserve(sailorId, boatId, date));
-            AddReserve(reserve);
+            ReserveList.Remove(ReserveList.Where(x => x.SailorId == sailorId
+                && x.BoatId == boatId && x.Date == date).First());
+            reserve.Id = ReserveList.Max(x => x.Id) + 1;
+            ReserveList.Add(reserve);
+
+            string queryString = "UPDATE Reserves " +
+                "SET sailorId = @newSailorId, boatId = @newBoatId, reserveDate = @newReserveDate " +
+                "WHERE sailorId = @oldSailorId AND boatId = @oldBoatId AND reserveDate = @oldReserveDate";
+
+            using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(queryString, connection))
+                {
+                    command.Parameters.AddWithValue("@oldSailorId", sailorId);
+                    command.Parameters.AddWithValue("@oldBoatId", boatId);
+                    command.Parameters.AddWithValue("@oldReserveDate", date);
+                    command.Parameters.AddWithValue("@newSailorId", reserve.SailorId);
+                    command.Parameters.AddWithValue("@newBoatId", reserve.BoatId);
+                    command.Parameters.AddWithValue("@newReserveDate", reserve.Date);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public void UpdateReserve(int id, Reserve reserve)
