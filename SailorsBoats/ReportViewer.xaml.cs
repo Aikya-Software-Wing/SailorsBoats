@@ -29,6 +29,34 @@ namespace SailorsBoats
         public ReportViewer(int id) : this()
         {
             reportId = id;
+            ShowReport();
         }
+
+        public void ShowReport()
+        {
+            switch(reportId)
+            {
+                case 1:
+                    List<OutputColumnsReport1> output = new List<OutputColumnsReport1>();
+
+                    // fill up the list
+                    output.Add(new OutputColumnsReport1
+                    {
+                        Column1 = "data",
+                        Column2 = "more data"
+                    });
+
+                    ReportDataGrid.ItemsSource = output;
+                    break;
+                case 2:
+                    break;
+            }
+        }
+    }
+
+    public class OutputColumnsReport1
+    {
+        public string Column1 { get; set; }
+        public string Column2 { get; set; }
     }
 }
