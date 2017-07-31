@@ -38,6 +38,7 @@ namespace SailorsBoats
 
             PopulateSailorDropDown();
             PopulateBoatDropDown();
+            SetUpForm();
         }
 
         public CreateEditReservation(int ReservationId) : this()
@@ -69,6 +70,11 @@ namespace SailorsBoats
             SailorName_TextBox.SelectedValue = reserve.SailorId;
             BoatName_TextBox.SelectedValue = reserve.BoatId;
             ReservationDate_TextBox.SelectedDate = reserve.Date;
+        }
+
+        private void SetUpForm()
+        {
+            ReservationDate_TextBox.SelectedDate = DateTime.Today;
         }
 
         private void PopulateSailorDropDown()
