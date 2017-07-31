@@ -33,6 +33,7 @@
         <RadioButton Name="BoatColor_RadioButton4" GroupName="BoatColor_TextBox" Content="Orange" Grid.Column="1" HorizontalAlignment="Left" Margin="80,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
         <RadioButton Name="BoatColor_RadioButton5" GroupName="BoatColor_TextBox" Content="Black" Grid.Column="1" HorizontalAlignment="Left" Margin="80,30,0,0" Grid.Row="2" VerticalAlignment="Top"/>
         <RadioButton Name="BoatColor_RadioButton6" GroupName="BoatColor_TextBox" Content="Purple" Grid.Column="1" HorizontalAlignment="Left" Margin="80,50,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Image Grid.Column="2" HorizontalAlignment="Left" Height="184" Margin="10,10,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="222" Source="Asserts/sailboat-512.png"/>
 
     </Grid>
 </Window>
