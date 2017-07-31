@@ -12,7 +12,7 @@
             <RowDefinition Height="241*"/>
         </Grid.RowDefinitions>
         <Label Content="Reports" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10" FontSize="36"/>
-        <ListView Name="Report_ListView" HorizontalAlignment="Left" Height="221" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="456">
+        <ListView Name="Report_ListView" Margin="10" Grid.Row="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
