@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SailorsBoats"
         mc:Ignorable="d"
-        Title="Sailors Boats" Height="427" Width="564" MinHeight="427" MinWidth="564">
+        Title="Boat Reservation System" Height="427" Width="564" MinHeight="427" MinWidth="564">
     <DockPanel>
         <Menu DockPanel.Dock="Top" Background="Transparent">
             <MenuItem Header="_File">
@@ -23,7 +23,7 @@
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="19*"/>
             </Grid.RowDefinitions>
-            <Label Content="Sailors Boats" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10,12,10,4" VerticalAlignment="Center" Width="536" FontSize="36" Height="64"/>
+            <Label Content="Boat Reservation System" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10,12,10,4" VerticalAlignment="Center" Width="536" FontSize="36" Height="64"/>
             <Button x:Name="SailorsButton" Content="Sailors" Margin="10" Grid.Row="1" FontSize="24" Click="SailorsButton_Click"/>
             <Button x:Name="BoatsButton" Content="Boats" Margin="10" Grid.Row="2" FontSize="24" Click="BoatsButton_Click"/>
             <Button x:Name="ReserveButton" Content="Reserve Boat" Margin="10" Grid.Row="3" FontSize="24" Click="ReserveButton_Click"/>
