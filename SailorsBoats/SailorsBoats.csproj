@@ -179,7 +179,14 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Asserts\sailboat-512.png" />
+    <Resource Include="Asserts\sailboat-512.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asserts\prescott_park_dock2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

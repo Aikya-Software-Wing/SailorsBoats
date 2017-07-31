@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:SailorsBoats"
         mc:Ignorable="d"
         Title="Boat Reservation System" Height="427" Width="564" MinHeight="427" MinWidth="564">
+    <Window.Background>
+        <ImageBrush ImageSource="Asserts/prescott_park_dock2.jpg"></ImageBrush>
+    </Window.Background>
     <DockPanel>
         <Menu DockPanel.Dock="Top" Background="Transparent">
             <MenuItem Header="_File">
@@ -24,10 +27,10 @@
                 <RowDefinition Height="19*"/>
             </Grid.RowDefinitions>
             <Label Content="Boat Reservation System" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10,12,10,4" VerticalAlignment="Center" Width="536" FontSize="36" Height="64"/>
-            <Button x:Name="SailorsButton" Content="Sailors" Margin="10" Grid.Row="1" FontSize="24" Click="SailorsButton_Click"/>
-            <Button x:Name="BoatsButton" Content="Boats" Margin="10" Grid.Row="2" FontSize="24" Click="BoatsButton_Click"/>
-            <Button x:Name="ReserveButton" Content="Reserve Boat" Margin="10" Grid.Row="3" FontSize="24" Click="ReserveButton_Click"/>
-            <Button x:Name="ReportsButton" Content="Reports" Margin="10" Grid.Row="4" FontSize="24" Click="ReportsButton_Click"/>
+            <Button x:Name="SailorsButton" Content="Sailors" Margin="10" Grid.Row="1" FontSize="24" Click="SailorsButton_Click" Background="Transparent" BorderBrush="Transparent"/>
+            <Button x:Name="BoatsButton" Content="Boats" Margin="10" Grid.Row="2" FontSize="24" Click="BoatsButton_Click" Background="Transparent" BorderBrush="Transparent"/>
+            <Button x:Name="ReserveButton" Content="Reserve Boat" Margin="10" Grid.Row="3" FontSize="24" Click="ReserveButton_Click" Background="Transparent" BorderBrush="Transparent"/>
+            <Button x:Name="ReportsButton" Content="Reports" Margin="10" Grid.Row="4" FontSize="24" Click="ReportsButton_Click" Background="Transparent" BorderBrush="Transparent"/>
 
         </Grid>
     </DockPanel>
