@@ -29,6 +29,9 @@ namespace SailorsBoats
         {
             InitializeComponent();
             dal = BoatDAL.Instance;
+
+            BoatId_TextBox.Text = (dal.GetAllBoats().Max(x => x.Id) + 1) + "";
+            BoatId_TextBox.IsEnabled = false;
         }
 
         public CreateEditBoat(int BoatId) : this()
