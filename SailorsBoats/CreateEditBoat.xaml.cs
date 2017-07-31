@@ -40,7 +40,7 @@ namespace SailorsBoats
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
             if (!ValidateSailorAndDisplayMessages(BoatId_TextBox.Text, BoatName_TextBox.Text,
-                BoatColor_TextBox.Text))
+                GetSelectedBoatColor()))
             {
                 return;
             }
@@ -65,14 +65,67 @@ namespace SailorsBoats
             Boat boat = dal.GetBoat(BoatId);
             BoatId_TextBox.Text = boat.Id + "";
             BoatName_TextBox.Text = boat.Name + "";
-            BoatColor_TextBox.Text = boat.Color + "";
+            SetSelectedBoatColor(boat.Color);
+        }
+
+        private string GetSelectedBoatColor()
+        {
+            if(BoatColor_RadioButton1.IsChecked.Value)
+            {
+                return (string)BoatColor_RadioButton1.Content;
+            }
+
+            if (BoatColor_RadioButton2.IsChecked.Value)
+            {
+                return (string)BoatColor_RadioButton2.Content;
+            }
+
+            if (BoatColor_RadioButton3.IsChecked.Value)
+            {
+                return (string)BoatColor_RadioButton3.Content;
+            }
+
+            if (BoatColor_RadioButton4.IsChecked.Value)
+            {
+                return (string)BoatColor_RadioButton4.Content;
+            }
+
+            if (BoatColor_RadioButton5.IsChecked.Value)
+            {
+                return (string)BoatColor_RadioButton5.Content;
+            }
+
+            if (BoatColor_RadioButton6.IsChecked.Value)
+            {
+                return (string)BoatColor_RadioButton6.Content;
+            }
+
+            return "";
+        }
+
+        private void SelectRadioButtonIfContentMatchesString(RadioButton button, string content)
+        {
+            if((string)button.Content == content)
+            {
+                button.IsChecked = true;
+            }
+        }
+
+        private void SetSelectedBoatColor(string color)
+        {
+            SelectRadioButtonIfContentMatchesString(BoatColor_RadioButton1, color);
+            SelectRadioButtonIfContentMatchesString(BoatColor_RadioButton2, color);
+            SelectRadioButtonIfContentMatchesString(BoatColor_RadioButton3, color);
+            SelectRadioButtonIfContentMatchesString(BoatColor_RadioButton4, color);
+            SelectRadioButtonIfContentMatchesString(BoatColor_RadioButton5, color);
+            SelectRadioButtonIfContentMatchesString(BoatColor_RadioButton6, color);
         }
 
         private Boat GetBoatObjectFromInput()
         {
             int id = int.Parse(BoatId_TextBox.Text);
             string name = BoatName_TextBox.Text;
-            string color = BoatColor_TextBox.Text;
+            string color = GetSelectedBoatColor();
 
             Boat boat = new Boat
             {

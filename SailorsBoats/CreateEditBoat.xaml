@@ -23,11 +23,16 @@
         <Label Content="Boat Color" Margin="10" Grid.Row="2" FontSize="14" FontWeight="Bold"/>
         <TextBox x:Name="BoatId_TextBox" Grid.Column="1" Margin="10,16,10,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
         <TextBox x:Name="BoatName_TextBox" Grid.Column="1" Margin="10,16,10,0" Grid.Row="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
-        <TextBox x:Name="BoatColor_TextBox" Grid.Column="1" Margin="10,16,10,0" Grid.Row="2" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
         <Button x:Name="Save_Button" Content="Save" Grid.Column="1" Margin="80,15,76,0" Grid.Row="4" Height="20" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="Save_Button_Click"/>
         <Label x:Name="BoatId_ValidationLabel" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="10,12,0,16" RenderTransformOrigin="0.526,0" Width="222" FontWeight="Bold" Foreground="Red"/>
         <Label x:Name="BoatName_ValidationLabel" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="10,12,0,16" RenderTransformOrigin="0.526,0" Width="222" Grid.Row="1" FontWeight="Bold" Foreground="Red"/>
         <Label x:Name="BoatColor_ValidationLabel" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="10,13,0,15" RenderTransformOrigin="0.526,0" Width="222" Grid.Row="2" FontWeight="Bold" Foreground="Red"/>
+        <RadioButton Name="BoatColor_RadioButton1" GroupName="BoatColor_TextBox" Content="Red" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <RadioButton Name="BoatColor_RadioButton2" GroupName="BoatColor_TextBox" Content="Blue" Grid.Column="1" HorizontalAlignment="Left" Margin="10,30,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <RadioButton Name="BoatColor_RadioButton3" GroupName="BoatColor_TextBox" Content="Green" Grid.Column="1" HorizontalAlignment="Left" Margin="10,50,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <RadioButton Name="BoatColor_RadioButton4" GroupName="BoatColor_TextBox" Content="Orange" Grid.Column="1" HorizontalAlignment="Left" Margin="80,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <RadioButton Name="BoatColor_RadioButton5" GroupName="BoatColor_TextBox" Content="Black" Grid.Column="1" HorizontalAlignment="Left" Margin="80,30,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <RadioButton Name="BoatColor_RadioButton6" GroupName="BoatColor_TextBox" Content="Purple" Grid.Column="1" HorizontalAlignment="Left" Margin="80,50,0,0" Grid.Row="2" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
