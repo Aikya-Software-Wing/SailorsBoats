@@ -52,6 +52,7 @@
         <Label Content="8" Grid.Column="1" HorizontalAlignment="Left" Margin="197,40,0,0" Grid.Row="3" VerticalAlignment="Top" Width="16" FontSize="10" Height="26" Grid.RowSpan="2"/>
         <Label Content="9" Grid.Column="1" HorizontalAlignment="Left" Margin="222,40,0,0" Grid.Row="3" VerticalAlignment="Top" Width="16" FontSize="10" Height="26" Grid.RowSpan="2"/>
         <Label Content="10" Grid.Column="1" HorizontalAlignment="Left" Margin="243,40,0,0" Grid.Row="3" VerticalAlignment="Top" Width="21" FontSize="10" Height="26" Grid.RowSpan="2"/>
+        <Image Grid.Column="2" HorizontalAlignment="Left" Height="196" Margin="10,10,0,0" Grid.RowSpan="4" VerticalAlignment="Top" Width="222" Source="Asserts/Sailor.png"/>
 
     </Grid>
 </Window>
