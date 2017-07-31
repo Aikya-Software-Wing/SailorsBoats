@@ -40,7 +40,7 @@ namespace SailorsBoats
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
             if (!ValidateSailorAndDisplayMessages(SailorId_TextBox.Text, SailorName_TextBox.Text,
-                SailorRating_TextBox.Text, SailorAge_TextBox.Text))
+                SailorRating_Slider.Value+"", SailorAge_TextBox.Text))
             {
                 return;
             }
@@ -66,14 +66,14 @@ namespace SailorsBoats
             SailorId_TextBox.Text = sailor.Id + "";
             SailorAge_TextBox.Text = sailor.Age + "";
             SailorName_TextBox.Text = sailor.Name + "";
-            SailorRating_TextBox.Text = sailor.Rating + "";
+            SailorRating_Slider.Value = sailor.Rating;
         }
 
         private Sailor GetSailorObjectFromInput()
         {
             int id = int.Parse(SailorId_TextBox.Text);
             string name = SailorName_TextBox.Text;
-            int rating = int.Parse(SailorRating_TextBox.Text);
+            int rating = (int)SailorRating_Slider.Value;
             int age = int.Parse(SailorAge_TextBox.Text);
 
             Sailor sailor = new Sailor
