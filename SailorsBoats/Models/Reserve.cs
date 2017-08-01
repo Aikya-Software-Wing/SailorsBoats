@@ -12,5 +12,7 @@ namespace SailorsBoats.Models
         public int SailorId { get; set; }
         public int BoatId { get; set; }
         public DateTime Date { get; set; }
+        public string SailorName { get; set; }
+        public string BoatName { get; set; }
     }
 }

@@ -47,8 +47,9 @@ namespace SailorsReserves.DAL
         {
             ReserveList.Clear();
 
-            string queryString = "SELECT * " +
-                "FROM Reserves";
+            string queryString = "select R.sailorId, R.boatId, R.reserveDate, B.name, S.name " +
+                "from (Reserves R inner join Boats B on R.boatId = B.id) " +
+                "inner join Sailors S on R.sailorId = S.id";
             int uid = 0;
 
             using (SqlConnection connection = new SqlConnection(Constants.ConnectionString))
@@ -65,7 +66,9 @@ namespace SailorsReserves.DAL
                                 Id = uid++,
                                 SailorId = (int)reader[0],
                                 BoatId = (int)reader[1],
-                                Date = (DateTime)reader[2]
+                                Date = (DateTime)reader[2],
+                                BoatName = (string)reader[3],
+                                SailorName = (string)reader[4]
                             });
                         }
                         reader.Close();
