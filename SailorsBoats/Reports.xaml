@@ -5,21 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SailorsBoats"
         mc:Ignorable="d"
-        Title="Reports" Height="352" Width="484" MinHeight="352" MinWidth="484">
+        Title="Reports" Height="352" Width="484" MinHeight="352" MinWidth="484" Background="LightSkyBlue">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80*"/>
             <RowDefinition Height="241*"/>
         </Grid.RowDefinitions>
         <Label Content="Reports" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10" FontSize="36"/>
-        <ListView Name="Report_ListView" Margin="10" Grid.Row="1">
+        <ListView Name="Report_ListView" Margin="10" Grid.Row="1" Background="Transparent">
             <ListView.View>
                 <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="Background" Value="CornflowerBlue" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+
                     <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}"/>
                     <GridViewColumn Header="">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="GenerateReport_Button" Content="Generate" Tag="{Binding Id}" Click="GenerateReport_Button_Click"/>
+                                <Button Name="GenerateReport_Button" Content="Generate" Tag="{Binding Id}" Click="GenerateReport_Button_Click" Background="Transparent" BorderBrush="Transparent"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
