@@ -1,5 +1,6 @@
 ﻿using SailorsBoats.DAL;
 using SailorsBoats.Models;
+using SailorsBoats.Util;
 using SailorsBoats.Validators;
 using System;
 using System.Collections.Generic;
@@ -89,42 +90,38 @@ namespace SailorsBoats
             return sailor;
         }
 
-        private void ClearAllValidationMessages()
-        {
-            SailorId_ValidationLabel.Content = "";
-            SailorName_ValidationLabel.Content = "";
-            SailorAge_ValidationLabel.Content = "";
-            SailorRating_ValidationLabel.Content = "";
-        }
-
         private bool ValidateSailorAndDisplayMessages(string id, string name, string rating, string age)
         {
-            ClearAllValidationMessages();
             bool allPropertiesValid = true;
-            string errorMessage;
+            string errorMessage, displayMessage = Constants.ValidationMessageHeader + "\n";
 
             if (!SailorValidator.IsIdValid(id, out errorMessage))
             {
                 allPropertiesValid = false;
-                SailorId_ValidationLabel.Content = errorMessage;
+                displayMessage += errorMessage + "\n";
             }
 
             if (!SailorValidator.IsNameValid(name, out errorMessage))
             {
                 allPropertiesValid = false;
-                SailorName_ValidationLabel.Content = errorMessage;
+                displayMessage += errorMessage + "\n";
             }
 
             if (!SailorValidator.IsAgeValid(age, out errorMessage))
             {
                 allPropertiesValid = false;
-                SailorAge_ValidationLabel.Content = errorMessage;
+                displayMessage += errorMessage + "\n";
             }
 
             if (!SailorValidator.IsRatingValid(rating, out errorMessage))
             {
                 allPropertiesValid = false;
-                SailorRating_ValidationLabel.Content = errorMessage;
+                displayMessage += errorMessage + "\n";
+            }
+
+            if (!allPropertiesValid)
+            {
+                MessageBox.Show(this, displayMessage, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return allPropertiesValid;
