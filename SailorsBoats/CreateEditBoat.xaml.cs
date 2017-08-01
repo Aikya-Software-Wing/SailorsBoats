@@ -1,5 +1,6 @@
 ﻿using SailorsBoats.DAL;
 using SailorsBoats.Models;
+using SailorsBoats.Util;
 using SailorsBoats.Validators;
 using System;
 using System.Collections.Generic;
@@ -150,25 +151,27 @@ namespace SailorsBoats
         {
             ClearAllValidationMessages();
             bool allPropertiesValid = true;
-            string errorMessage;
+            string errorMessage, displayMessage = Constants.ValidationMessageHeader + "\n";
 
             if (!BoatValidator.IsIdValid(id, out errorMessage))
             {
                 allPropertiesValid = false;
-                BoatId_ValidationLabel.Content = errorMessage;
+                displayMessage  += errorMessage + "\n";
             }
 
             if (!BoatValidator.IsNameValid(name, out errorMessage))
             {
                 allPropertiesValid = false;
-                BoatName_ValidationLabel.Content = errorMessage;
+                displayMessage += errorMessage + "\n";
             }
 
             if (!BoatValidator.IsColorValid(color, out errorMessage))
             {
                 allPropertiesValid = false;
-                BoatColor_ValidationLabel.Content = errorMessage;
+                displayMessage += errorMessage + "\n";
             }
+
+            MessageBox.Show(this, displayMessage, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
 
             return allPropertiesValid;
         }

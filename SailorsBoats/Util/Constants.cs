@@ -16,5 +16,13 @@ namespace SailorsBoats.Util
                 return ConfigurationManager.ConnectionStrings["SailorBoatsDatabase"].ConnectionString;
             }
         }
+
+        public static string ValidationMessageHeader
+        {
+            get
+            {
+                return "The following error(s) prevented the data from being saved";
+            }
+        }
     }
 }
