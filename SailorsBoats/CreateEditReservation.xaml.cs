@@ -69,11 +69,20 @@ namespace SailorsBoats
             Reserve reserve = reserveDal.GetReserve(ReservationId);
             SailorName_TextBox.SelectedValue = reserve.SailorId;
             BoatName_TextBox.SelectedValue = reserve.BoatId;
+
+            ReservationDate_TextBox.BlackoutDates.Clear();
+            ReservationDate_TextBox.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, 
+                reserve.Date.AddDays(-1)));
+            ReservationDate_TextBox.BlackoutDates.Add(new CalendarDateRange(reserve.Date.AddDays(1),
+                DateTime.Now.AddDays(-1)));
+
             ReservationDate_TextBox.SelectedDate = reserve.Date;
         }
 
         private void SetUpForm()
         {
+            ReservationDate_TextBox.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, 
+                DateTime.Today.AddDays(-1)));
             ReservationDate_TextBox.SelectedDate = DateTime.Today;
         }
 
