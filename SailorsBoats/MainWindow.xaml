@@ -26,11 +26,11 @@
                 <RowDefinition Height="20*"/>
                 <RowDefinition Height="19*"/>
             </Grid.RowDefinitions>
-            <Label Content="Boat Reservation System" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10,12,10,4" VerticalAlignment="Center" Width="536" FontSize="36" Height="64"/>
-            <Button x:Name="SailorsButton" Content="Sailors" Margin="10" Grid.Row="1" FontSize="24" Click="SailorsButton_Click" Background="Transparent" BorderBrush="Transparent"/>
-            <Button x:Name="BoatsButton" Content="Boats" Margin="10" Grid.Row="2" FontSize="24" Click="BoatsButton_Click" Background="Transparent" BorderBrush="Transparent"/>
-            <Button x:Name="ReserveButton" Content="Reserve Boat" Margin="10" Grid.Row="3" FontSize="24" Click="ReserveButton_Click" Background="Transparent" BorderBrush="Transparent"/>
-            <Button x:Name="ReportsButton" Content="Reports" Margin="10" Grid.Row="4" FontSize="24" Click="ReportsButton_Click" Background="Transparent" BorderBrush="Transparent"/>
+            <Label Content="Boat Reservation System" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10,12,10,4" VerticalAlignment="Center" Width="536" FontSize="48" Height="64" FontFamily="Vivaldi" FontWeight="ExtraBlack" FontStretch="UltraExpanded"/>
+            <Button x:Name="SailorsButton" Content="Sailors" Margin="10" Grid.Row="1" FontSize="24" Click="SailorsButton_Click" Background="Transparent" BorderBrush="Transparent" FontWeight="ExtraBlack" FontStretch="ExtraExpanded"/>
+            <Button x:Name="BoatsButton" Content="Boats" Margin="10" Grid.Row="2" FontSize="24" Click="BoatsButton_Click" Background="Transparent" BorderBrush="Transparent" FontWeight="ExtraBlack" FontStretch="ExtraExpanded"/>
+            <Button x:Name="ReserveButton" Content="Reserve Boat" Margin="10" Grid.Row="3" FontSize="24" Click="ReserveButton_Click" Background="Transparent" BorderBrush="Transparent" FontWeight="ExtraBlack" FontStretch="ExtraExpanded"/>
+            <Button x:Name="ReportsButton" Content="Reports" Margin="10" Grid.Row="4" FontSize="24" Click="ReportsButton_Click" Background="Transparent" BorderBrush="Transparent" FontWeight="ExtraBlack" FontStretch="ExtraExpanded"/>
 
         </Grid>
     </DockPanel>
