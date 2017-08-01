@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SailorsBoats"
         mc:Ignorable="d"
-        Title="Sailors" Height="352" Width="484" MinHeight="352" MinWidth="484">
+        Title="Sailors" Height="352" Width="484" MinHeight="352" MinWidth="484" Background="LightSkyBlue">
     <DockPanel>
         <Menu DockPanel.Dock="Top" Background="Transparent">
             <MenuItem Header="_File">
@@ -18,23 +18,36 @@
                 <RowDefinition Height="226*"/>
             </Grid.RowDefinitions>
             <Label Content="Sailors" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10" FontSize="36"/>
-            <DataGrid x:Name="SailorsDataGrid" Margin="10" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid x:Name="SailorsDataGrid" Margin="10" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" Background="Transparent" RowBackground="Transparent">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="CornflowerBlue" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+
+                <DataGrid.RowHeaderStyle>
+                    <Style TargetType="{x:Type DataGridRowHeader}">
+                        <Setter Property="Background" Value="Transparent" />
+                    </Style>
+                </DataGrid.RowHeaderStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Id" IsReadOnly="True"/>
-                    <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Name" IsReadOnly="True"/>
-                    <DataGridTextColumn Binding="{Binding Rating}" ClipboardContentBinding="{x:Null}" Header="Rating" IsReadOnly="True"/>
-                    <DataGridTextColumn Binding="{Binding Age}" ClipboardContentBinding="{x:Null}" Header="Age" IsReadOnly="True"/>
-                    <DataGridTemplateColumn Header="Edit">
+                    <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Id" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Name" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Rating}" ClipboardContentBinding="{x:Null}" Header="Rating" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Age}" ClipboardContentBinding="{x:Null}" Header="Age" IsReadOnly="True" Width="*"/>
+                    <DataGridTemplateColumn Header="Edit" Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Edit" Tag="{Binding Id}" Click="EditButton_Click"/>
+                                <Button Content="Edit" Tag="{Binding Id}" Click="EditButton_Click" Background="Transparent" BorderBrush="Transparent"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn Header="Delete" Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Delete" Tag="{Binding Id}" Click="DeleteButton_Click"/>
+                                <Button Content="Delete" Tag="{Binding Id}" Click="DeleteButton_Click" Background="Transparent" BorderBrush="Transparent"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
