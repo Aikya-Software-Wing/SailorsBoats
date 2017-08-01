@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SailorsBoats"
         mc:Ignorable="d"
-        Title="ReportViewer" Height="300" Width="300" WindowState="Maximized">
+        Title="ReportViewer" Height="539.474" Width="791.729" Background="Beige">
     <Grid>
-        <DataGrid Name="ReportDataGrid"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.7*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <DataGrid Name="ReportDataGrid" Margin="10" Grid.Row="2" Grid.Column="1" Background="Transparent" RowBackground="Transparent" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="CornflowerBlue" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.RowHeaderStyle>
+                <Style TargetType="{x:Type DataGridRowHeader}">
+                    <Setter Property="Background" Value="Transparent" />
+                </Style>
+            </DataGrid.RowHeaderStyle>
+        </DataGrid>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="0" Grid.ColumnSpan="3" Panel.ZIndex="0" Background="LightBlue">
+        </Border>
+        <Image Margin="26,22,26,28" Source="Asserts/logo007.png" Stretch="Fill" Panel.ZIndex="1"/>
+        <Label Content="Boat Reservation System" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="10,22,10,18" FontSize="40" FontFamily="Vivaldi" FontWeight="ExtraBlack" FontStretch="UltraExpanded" Grid.Column="1" Panel.ZIndex="1"/>
+        <Label Content="Report" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="36" Width="540" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="0" Grid.Row="3" Grid.ColumnSpan="3" Background="SkyBlue">
+            <Label Name="Foorter_Label" Content="Label" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Margin="9,2,9,1"/>
+        </Border>
     </Grid>
 </Window>

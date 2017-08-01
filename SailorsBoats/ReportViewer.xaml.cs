@@ -26,6 +26,8 @@ namespace SailorsBoats
         public ReportViewer()
         {
             InitializeComponent();
+            Foorter_Label.Content = "Generated on " + DateTime.Now.ToLongDateString() 
+                + " at " + DateTime.Now.ToLongTimeString();
         }
 
         public ReportViewer(int id) : this()
