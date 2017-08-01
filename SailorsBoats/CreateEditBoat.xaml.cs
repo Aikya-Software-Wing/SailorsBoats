@@ -140,16 +140,8 @@ namespace SailorsBoats
             return boat;
         }
 
-        private void ClearAllValidationMessages()
-        {
-            BoatId_ValidationLabel.Content = "";
-            BoatName_ValidationLabel.Content = "";
-            BoatColor_ValidationLabel.Content = "";
-        }
-
         private bool ValidateSailorAndDisplayMessages(string id, string name, string color)
         {
-            ClearAllValidationMessages();
             bool allPropertiesValid = true;
             string errorMessage, displayMessage = Constants.ValidationMessageHeader + "\n";
 
@@ -171,7 +163,10 @@ namespace SailorsBoats
                 displayMessage += errorMessage + "\n";
             }
 
-            MessageBox.Show(this, displayMessage, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+            if (!allPropertiesValid)
+            {
+                MessageBox.Show(this, displayMessage, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
             return allPropertiesValid;
         }
