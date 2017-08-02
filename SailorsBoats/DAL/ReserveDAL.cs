@@ -1,4 +1,5 @@
-﻿using SailorsBoats.Models;
+﻿using SailorsBoats.DAL;
+using SailorsBoats.Models;
 using SailorsBoats.Util;
 using System;
 using System.Collections.Generic;
@@ -81,7 +82,11 @@ namespace SailorsReserves.DAL
 
         public void AddReserve(Reserve reserve)
         {
+            SailorDAL sailorDal = SailorDAL.Instance;
+            BoatDAL boatDal = BoatDAL.Instance;
             reserve.Id = ReserveList.Max(x => x.Id) + 1;
+            reserve.SailorName = sailorDal.GetSailor(reserve.SailorId).Name;
+            reserve.BoatName = boatDal.GetBoat(reserve.BoatId).Name;
             ReserveList.Add(reserve);
 
             string queryString = "INSERT INTO Reserves " +
