@@ -153,9 +153,13 @@ namespace SailorsReserves.DAL
 
         public void UpdateReserve(int sailorId, int boatId, DateTime date, Reserve reserve)
         {
+            SailorDAL sailorDal = SailorDAL.Instance;
+            BoatDAL boatDal = BoatDAL.Instance;
             ReserveList.Remove(ReserveList.Where(x => x.SailorId == sailorId
                 && x.BoatId == boatId && x.Date == date).First());
             reserve.Id = ReserveList.Max(x => x.Id) + 1;
+            reserve.SailorName = sailorDal.GetSailor(reserve.SailorId).Name;
+            reserve.BoatName = boatDal.GetBoat(reserve.BoatId).Name;
             ReserveList.Add(reserve);
 
             string queryString = "UPDATE Reserves " +
